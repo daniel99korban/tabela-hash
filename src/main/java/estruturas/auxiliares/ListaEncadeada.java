@@ -17,18 +17,22 @@ public class ListaEncadeada<T> {
      * @return 0 lista vazia
      * @return 1 lista contém elementos
      */
-    public int mostrar(){
-  
-        if(this.tamanho == 0) return this.tamanho;
+    
+    @Override
+    public  String toString(){
+        String valores = "";
+        
+        if(this.tamanho == 0) return valores;
         
         var noAux = new No<T>();
         noAux = this.noInicio;
         
         while(noAux != null){
-            System.out.println(noAux.getValor());
+            valores += "[" + noAux.getValor() + "] ";
             noAux  = noAux.getProximo();
         }
-        return 1;
+        
+        return valores;
     }
     
     public void inserir(T valor){
@@ -52,7 +56,7 @@ public class ListaEncadeada<T> {
         
     }
     
-    public int buscar(T valor){
+    public boolean buscar(T valor){
         var noAux = new  No<T>();
         noAux = this.noInicio;
         
@@ -60,7 +64,7 @@ public class ListaEncadeada<T> {
             noAux = noAux.getProximo();
         }
         // valor não foi encontrado
-        if(noAux==null) return 0;
-        return 1;
+        if(noAux == null) return false;
+        return true;
     };
 }
