@@ -3,7 +3,7 @@ package estruturas.auxiliares;
  *
  * @author Daniel_Korban
  */
-public class ListaEncadeada<T> {
+public class ListaEncadeada<T> implements Lista<T>{
     
     No<T> noInicio;
     int tamanho;
@@ -35,6 +35,7 @@ public class ListaEncadeada<T> {
         return valores;
     }
     
+    @Override
     public void inserir(T valor){
         var novoNo = new No<T>();
         novoNo.setValor(valor);
@@ -56,6 +57,7 @@ public class ListaEncadeada<T> {
         
     }
     
+    @Override
     public boolean buscar(T valor){
         var noAux = new  No<T>();
         noAux = this.noInicio;
@@ -66,5 +68,10 @@ public class ListaEncadeada<T> {
         // valor não foi encontrado
         if(noAux == null) return false;
         return true;
-    };
+    }
+
+    @Override
+    public boolean remover(T valor) {
+        return false;
+    }
 }

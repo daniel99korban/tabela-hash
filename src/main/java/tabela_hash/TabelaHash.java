@@ -1,14 +1,15 @@
 package tabela_hash;
+import estruturas.auxiliares.Lista;
 import estruturas.auxiliares.ListaEncadeada;
-import estruturas.auxiliares.No;
 
 /**
  * @author Daniel_Korban
+ * @param <T> pode ser quaisquer tipos não primitivos ex.: Integer, String, Pessoa, Cadastro ou etc...
  */
 
-public class TabelaHash<T>{
+public class TabelaHash<T> implements Lista<T>{
     int tamanho;
-    ListaEncadeada<T>[] tabela;
+    Lista<T>[] tabela;
 
     public TabelaHash(int tamanho) {
         this.tamanho = tamanho;
@@ -25,11 +26,13 @@ public class TabelaHash<T>{
         return chave;
     }
     
+    @Override
     public void inserir(T valor){
         int hash = this.calcularHash(valor);
         this.tabela[hash].inserir(valor);
     }
     
+    @Override
     public boolean buscar(T cod){
         // implemetar uma lógica pra caso o cod seja maior do que length
         /*if(((int)cod) > this.tamanho){
@@ -43,11 +46,16 @@ public class TabelaHash<T>{
     public String toString() {
         String valores = "";
         int i = 0;
-        for(ListaEncadeada<T> lista: this.tabela){
+        for(Lista<T> lista: this.tabela){
             valores += "(" + i + ") : " + lista + "\n";
             i++;
         }
         return valores;
+    }
+
+    @Override
+    public boolean remover(T valor) {
+        return true;
     }
     
 }
